@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/Screens/loginSignupPages/login_screen.dart';
 import 'package:travel_app/Screens/onboarding_screens/onboarding_screen2.dart';
 import 'package:travel_app/utils/Colors/colors.dart';
 
@@ -72,7 +73,7 @@ class OnBoardingScreen3 extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.push(context,
                                         MaterialPageRoute(builder: (context) {
-                                      return OnBoardingScreen2();
+                                      return LoginScreen();
                                     }));
                                   },
                                   style: ElevatedButton.styleFrom(
@@ -84,9 +85,12 @@ class OnBoardingScreen3 extends StatelessWidget {
                                     ),
                                     padding: EdgeInsets.symmetric(
                                         horizontal: 30,
-                                        vertical: 10), // Button size
+                                        vertical: 16), // Button size
                                   ),
-                                  child: Icon(Icons.forward))),
+                                  child: Text(
+                                    "SignUp",
+                                    style: TextStyle(color: MyColor.green),
+                                  ))),
                         ],
                       ),
                     ),

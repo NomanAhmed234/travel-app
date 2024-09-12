@@ -86,7 +86,10 @@ class OnBoardingScreen2 extends StatelessWidget {
                                         horizontal: 30,
                                         vertical: 10), // Button size
                                   ),
-                                  child: Icon(Icons.forward))),
+                                  child: Image.asset(
+                                    'image/arrow.png',
+                                    width: 30,
+                                  ))),
                         ],
                       ),
                     ),

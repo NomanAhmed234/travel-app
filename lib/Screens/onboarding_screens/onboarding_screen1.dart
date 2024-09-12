@@ -33,7 +33,7 @@ class OnBoardingScreen1 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +86,10 @@ class OnBoardingScreen1 extends StatelessWidget {
                                         horizontal: 30,
                                         vertical: 10), // Button size
                                   ),
-                                  child: Icon(Icons.forward))),
+                                  child: Image.asset(
+                                    'image/arrow.png',
+                                    width: 30,
+                                  ))),
                         ],
                       ),
                     ),

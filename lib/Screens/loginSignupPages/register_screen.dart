@@ -1,16 +1,17 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:travel_app/Screens/loginSignupPages/login_screen.dart';
 import 'package:travel_app/utils/Colors/colors.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<RegisterScreen> {
   bool _isEnabled = true; // To track if TextField is enabled
   bool _obscureText = true; // Controls if the password is hidden or visible
   @override
@@ -23,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Stack(
         children: [
           Image.asset(
-            'image/loginImage.jpg',
+            'image/registerImage.jpg',
             width: double.infinity,
             height: double.infinity,
             fit: BoxFit.cover,
@@ -36,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Colors.transparent, // Light color at the top
+                  MyColor.green.withOpacity(0.1), // Light color at the top
                   MyColor.green.withOpacity(1), // Dark color at the bottom
                 ],
                 stops: [0.1, 0.5],
@@ -44,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Positioned(
-              top: 100,
+              top: 130,
               left: 20,
               child: Container(
                 width: 300,
@@ -56,11 +57,54 @@ class _LoginScreenState extends State<LoginScreen> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        "Login",
+                        "Register",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
                             fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: MyColor.lightGreen,
+                          borderRadius: BorderRadius.circular(20),
+                          // border: Border.all(
+                          //   color: _isEnabled
+                          //       ? MyColor.yellow
+                          //       : Colors
+                          //           .grey, // Change color based on enabled state
+                          //   width: 1.0,
+                          // ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: TextField(
+                            enabled:
+                                _isEnabled, // Control if the TextField is enabled or disabled
+                            keyboardType: TextInputType.text,
+                            decoration: InputDecoration(
+                              hintStyle: TextStyle(
+                                  color: Colors.white.withOpacity(0.2)),
+                              labelText: "Name",
+                              labelStyle: TextStyle(
+                                color: _isEnabled
+                                    ? MyColor.yellow
+                                    : Colors
+                                        .grey, // Label color based on enabled state
+                              ),
+                              prefixIcon: Icon(Icons.person),
+                              prefixIconColor: _isEnabled
+                                  ? MyColor.yellow
+                                  : Colors
+                                      .grey, // Icon color based on enabled state
+                              hintText: "Abc",
+                              border: InputBorder
+                                  .none, // No border on the TextField itself
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: 15,
@@ -93,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     : Colors
                                         .grey, // Label color based on enabled state
                               ),
-                              prefixIcon: Icon(Icons.person),
+                              prefixIcon: Icon(Icons.email_outlined),
                               prefixIconColor: _isEnabled
                                   ? MyColor.yellow
                                   : Colors
@@ -131,21 +175,21 @@ class _LoginScreenState extends State<LoginScreen> {
                               label: Text("Password"),
                               labelStyle: TextStyle(color: MyColor.yellow),
                               prefixIcon: Icon(Icons.lock),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  _obscureText
-                                      ? Icons.visibility_off
-                                      : Icons.visibility,
-                                  color: MyColor
-                                      .yellow, // Toggles between visibility icons
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    _obscureText =
-                                        !_obscureText; // Toggles the password visibility
-                                  });
-                                },
-                              ),
+                              // suffixIcon: IconButton(
+                              //   icon: Icon(
+                              //     _obscureText
+                              //         ? Icons.visibility_off
+                              //         : Icons.visibility,
+                              //     color: MyColor
+                              //         .yellow, // Toggles between visibility icons
+                              //   ),
+                              //   onPressed: () {
+                              //     setState(() {
+                              //       _obscureText =
+                              //           !_obscureText; // Toggles the password visibility
+                              //     });
+                              //   },
+                              // ),
                               prefixIconColor: MyColor.yellow,
                               hintText: "*********",
                               border: InputBorder
@@ -155,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 30,
                       ),
                       Container(
                         child: Row(
@@ -183,49 +227,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                           horizontal: 50,
                                           vertical: 20), // Button size
                                     ),
-                                    child: Text("Login")),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                child: ElevatedButton(
-                                    onPressed: () {
-                                      // Navigator.push(context,
-                                      //     MaterialPageRoute(
-                                      //         builder: (context) {
-                                      //   return OnBoardingScreen2();
-                                      // }));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      foregroundColor: MyColor.green,
-                                      backgroundColor: MyColor.yellow,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(
-                                            20), // <-- Make it rounded
-                                      ),
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                          vertical: 20), // Button size
-                                    ),
-                                    child: Text("Login")),
+                                    child: Text("Register")),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Center(
-                          child: Text(
-                        "forgot password",
-                        style:
-                            TextStyle(color: MyColor.yellow.withOpacity(0.5)),
-                      )),
                       SizedBox(
                         height: 15,
                       ),
@@ -327,10 +334,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         height: 15,
                       ),
                       Center(
-                          child: Text(
-                        "create an account",
-                        style:
-                            TextStyle(color: MyColor.yellow.withOpacity(0.5)),
+                          child: TextButton(
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return LoginScreen();
+                          }));
+                        },
+                        child: Text(
+                          "already have an account",
+                          style:
+                              TextStyle(color: MyColor.yellow.withOpacity(0.5)),
+                        ),
                       )),
                     ],
                   ),
