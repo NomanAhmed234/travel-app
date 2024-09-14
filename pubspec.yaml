@@ -43,6 +43,7 @@ dependencies:
   firebase_messaging: ^14.7.19
   flutter_social_button: ^1.1.4+1
   icons_plus: ^5.0.0
+  flutter_inset_box_shadow: ^1.0.8
 
 dev_dependencies:
   flutter_test:
